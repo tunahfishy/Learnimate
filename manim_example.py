@@ -44,6 +44,10 @@ class PythagoreanTheorem(Scene):
 class RightAngleTriangle(VMobject):
     def __init__(self, scale=1, **kwargs):
         super().__init__(**kwargs)
-        self.c2p = complex_to_R3(scale)
+        self.scale = scale
         self.hyp = Line(self.c2p(0), self.c2p(1 + 1j))
         self.add(Line(self.c2p(0), self.c2p(1j)), Line(self.c2p(0), self.c2p(1)), Line(self.c2p(1), self.c2p(1j)), self.hyp)
+
+    def c2p(self, complex_num):
+        return self.scale * complex_to_R3(complex_num)
+
